@@ -10,63 +10,28 @@
 # Alert the user if they try to delete a task that doesn't exist
 # Alert the user if they select an option on the main menu that doesn't exist
 
-# Function for the Display Menu
-def displayMenu():
-    print("\nWelcome to the To Do List Application!")
-    print("Please choose an option:")
-    print("1. Add Task")
-    print("2. View Tasks")
-    print("3. Delete Task")
-    print("4. Quit Application")
-
-# Function for adding a task
-def addTask(tasks):
-    task = input("Enter the task you want to add: ")
-    tasks.append(task)
-    print(f"\nTask '{task}' added successfully!")
-
-# Function for viewing tasks
-def viewTasks(tasks):
-    if not tasks:
-        print("\nNo tasks to view.")
-    else:
-        print("\nYour tasks:")
-        for index, task in enumerate(tasks, start=1):
-            print(f"{index}. {task}")
+from display_menu import display_menu
+from add_task import add_task
+from view_task import view_tasks
+from delete_task import delete_task
         
-# Function for deleting a task  
-def deleteTask(tasks):
-    if not tasks:
-        print("\nNo tasks to delete.")
-    else:
-        viewTasks(tasks)
-        try:
-            task_number = int(input("Enter the task number you want to delete: "))
-            if 1 <= task_number <= len(tasks):
-                removed_task = tasks.pop(task_number - 1)
-                print(f"\nTask '{removed_task}' deleted successfully!")
-            else:
-                print("\nInvalid task number.")
-        except ValueError:
-            print("\nPlease enter a valid number.")
-        except IndexError:
-            print("\nTask number out of range.")
+
 
 # Main function to run the application    
 def main():
     tasks = []
     while True:
-        displayMenu()
+        display_menu()
         # Sets choice to value of None fixing bug where the program would crash if the user entered a non-integer value
         choice = None
         try:
             choice = int(input("Enter your choice: "))
             if choice == 1:
-                addTask(tasks)
+                add_task(tasks)
             elif choice == 2:
-                viewTasks(tasks)
+                view_tasks(tasks)
             elif choice == 3:
-                deleteTask(tasks)
+                delete_task(tasks)
             # Uses the break feature to shut down the application for the Qudit Application option
             elif choice == 4:
                 print("Thank you for using the To Do List Application!")
