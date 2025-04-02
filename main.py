@@ -32,7 +32,7 @@ def main():
                 view_tasks(tasks)
             elif choice == 3:
                 delete_task(tasks)
-            # Uses the break feature to shut down the application for the Qudit Application option
+            # Uses the break feature to shut down the application for the Quit Application option
             elif choice == 4:
                 print("Thank you for using the To Do List Application!")
                 break
